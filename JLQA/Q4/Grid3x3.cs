@@ -8,5 +8,6 @@ namespace JLQA.Q4
 {
     public class Grid3x3
     {
+
     }
 }

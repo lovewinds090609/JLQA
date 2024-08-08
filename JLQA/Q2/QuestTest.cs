@@ -13,6 +13,9 @@ namespace JLQA.Q2
         {
             _quest = new Quest();
         }
+        /// <summary>
+        /// A完成但B未完成
+        /// </summary>
         [Fact]
         public void AIsCompleted_BNot()
         {
@@ -20,6 +23,9 @@ namespace JLQA.Q2
             _quest._questB = false;
             Assert.Equal("D", _quest.GetQuest());
         }
+        /// <summary>
+        /// B完成但A未完成
+        /// </summary>
         [Fact]
         public void BIsCompleted_ANot()
         {
@@ -27,6 +33,9 @@ namespace JLQA.Q2
             _quest._questB = true;
             Assert.Equal("D", _quest.GetQuest());
         }
+        /// <summary>
+        /// A和B都完成
+        /// </summary>
         [Fact]
         public void AAndBCompleted()
         {
@@ -34,6 +43,9 @@ namespace JLQA.Q2
             _quest._questB = true;
             Assert.Equal("C", _quest.GetQuest());
         }
+        /// <summary>
+        /// A和B都未完成
+        /// </summary>
         [Fact]
             
         public void AAndBNotCompleted()
