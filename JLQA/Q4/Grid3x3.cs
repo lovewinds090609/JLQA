@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JLQA.Q4
 {
-    internal class Grid3x3
+    public class Grid3x3
     {
     }
 }

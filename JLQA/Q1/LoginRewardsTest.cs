@@ -21,6 +21,7 @@ namespace JLQA.Q1
         [Fact]
         public void NoLogin()
         {
+            Assert.Empty(_loginRewards.GetLoggedInDays());
             Assert.Empty(_loginRewards.GetEarnedRewards());
         }
         /// <summary>
@@ -34,6 +35,7 @@ namespace JLQA.Q1
         [InlineData(3,"C")]
         public void LoginOneDay(int day , string reward) {
             _loginRewards.Login(day);
+            Assert.Single(_loginRewards.GetLoggedInDays());
             Assert.Equal(reward, _loginRewards.GetEarnedRewards()[0]);
         }
         /// <summary>
@@ -50,6 +52,7 @@ namespace JLQA.Q1
         {
             _loginRewards.Login(day1);
             _loginRewards.Login(day2);
+            Assert.Equal(2,_loginRewards.GetLoggedInDays().Count);
             Assert.Equal(rewards, _loginRewards.GetEarnedRewards()[0]+ _loginRewards.GetEarnedRewards()[1]);
         }
         /// <summary>
@@ -61,6 +64,7 @@ namespace JLQA.Q1
             _loginRewards.Login(1);
             _loginRewards.Login(2);
             _loginRewards.Login(3);
+            Assert.Equal(3,_loginRewards.GetLoggedInDays().Count);
             Assert.Equal("ABC", _loginRewards.GetEarnedRewards()[0]+ _loginRewards.GetEarnedRewards()[1]+ _loginRewards.GetEarnedRewards()[2]);
         }
         /// <summary>
@@ -75,7 +79,8 @@ namespace JLQA.Q1
         {
             _loginRewards.Login(day);
             _loginRewards.Login(day);
-            ///只能有1個獎勵
+            Assert.Single(_loginRewards.GetLoggedInDays());
+            //只能有1個獎勵
             Assert.Single(_loginRewards.GetEarnedRewards());
         }
         /// <summary>
@@ -88,6 +93,7 @@ namespace JLQA.Q1
         public void LoginOtherDay(int day) 
         {
             _loginRewards.Login(day);
+            Assert.Empty(_loginRewards.GetLoggedInDays());
             Assert.Empty(_loginRewards.GetEarnedRewards());
         }
     }

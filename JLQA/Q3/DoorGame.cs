@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JLQA.Q3
 {
-    internal class DoorGame
+    public class DoorGame
     {
     }
 }
