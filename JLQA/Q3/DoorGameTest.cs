@@ -109,11 +109,25 @@ namespace JLQA.Q3
         [Fact]
         public void BPowerN()
         {
-            for (int i = 0; i < 1000; i++) {
+            //由於當i非常大時會因為有效數字的問題而直接顯示0 所以只驗證在有效數字內的次數
+            for (int i = 0; i < 80; i++) {
                 _game.option1 = 'b';
                 _game.Level_1();
             }
+            //result趨近於0但是不為0
             Assert.True(_game.result > 0);
+            _game.option1 = 'a';
+            _game.Level_1();
+            //經過無數次選擇b 最後的結果趨近於a所帶來的獎勵
+            Assert.True(_game.result > 500 && _game.result <501);
+            //第二關再次選擇無數次b
+            for (int i = 0; i < 80; i++)
+            {
+                _game.option2 = 'b';
+                _game.Level_2();
+            }
+            //由於初始獎勵有效數字已經超出decimal的精確度了 趨近於0直接捨入變成0
+            Assert.True(_game.result == 500);
         }
         /// <summary>
         /// 第一關選c

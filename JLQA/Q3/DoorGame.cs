@@ -8,8 +8,8 @@ namespace JLQA.Q3
 {
     public class DoorGame
     {
-        private double _initialScore = 1000;
-        public double result;
+        private decimal _initialScore = 1000;
+        public decimal result;
         private int bouns = 0;
         public char option1 , option2;
         private bool endGame = false;
