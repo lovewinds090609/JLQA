@@ -8,5 +8,18 @@ namespace JLQA.Q2
 {
     public class Quest
     {
+        public bool _questA {  get; set; }
+        public bool _questB {  get; set; }
+        public string GetQuest()
+        {
+            if (_questA && _questB)
+            {
+                return "C";
+            }
+            else
+            {
+                return "D";
+            }
+        }
     }
 }
