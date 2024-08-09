@@ -10,11 +10,17 @@ namespace JLQA.Q4
     public class Grid3x3Test
     {
         Grid3x3 _grid3X3;
+        //於有效得分測試案例累積分數
         private static int totalScore = 0;
         public Grid3x3Test()
         {
             _grid3X3 = new Grid3x3 ();
         }
+        /// <summary>
+        /// 1分組合
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123",1)]
         [InlineData("456",1)]
@@ -28,6 +34,11 @@ namespace JLQA.Q4
             Assert.Equal(exceptScore, score);
             totalScore += score;
         }
+        /// <summary>
+        /// 3分組合
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123,456", 3)]
         [InlineData("123,789", 3)]
@@ -41,6 +52,11 @@ namespace JLQA.Q4
             Assert.Equal(exceptScore, score);
             totalScore += score;
         }
+        /// <summary>
+        /// 5分組合
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123,456,789", 5)]
         [InlineData("147,258,369", 5)]
@@ -50,6 +66,11 @@ namespace JLQA.Q4
             Assert.Equal(exceptScore, score);
             totalScore += score;
         }
+        /// <summary>
+        /// 1分組合但是有重疊線
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123,147", 1)]
         [InlineData("123,258", 1)]
@@ -59,6 +80,11 @@ namespace JLQA.Q4
             int score = _grid3X3.Play(line);
             Assert.Equal(exceptScore, score);
         }
+        /// <summary>
+        /// 3分組合但是有重疊線
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123,456,147", 3)]
         [InlineData("123,456,258", 3)]
@@ -68,6 +94,11 @@ namespace JLQA.Q4
             int score = _grid3X3.Play(line);
             Assert.Equal(exceptScore, score);
         }
+        /// <summary>
+        /// 5分組合但是有重疊線
+        /// </summary>
+        /// <param name="line"></param>
+        /// <param name="exceptScore"></param>
         [Theory]
         [InlineData("123,456,789,147", 5)]
         [InlineData("123,456,789,258", 5)]
@@ -80,6 +111,9 @@ namespace JLQA.Q4
             int score = _grid3X3.Play(line);
             Assert.Equal(exceptScore, score);
         }
+        /// <summary>
+        /// 計算有效得分 34為手動計算
+        /// </summary>
         [Fact]
         public void TotalScore()
         {
